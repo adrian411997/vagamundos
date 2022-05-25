@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/estilos.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.1/pure-min.css"
+      crossorigin="anonymous"
+    />
+
+    <!-- Load font awesome icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- Load font awesome icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    />
+    <link rel="icon" href="/images/viaje.png" />
+    <title>Perfil</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body class="contenido">
+<%-include ('header_private') %>
+    <div class="">
+      <div class="my-3 mx-4 titulo1 bg-white py-2">
+        <h3 class="px-2 py-2 text-center">Tus ultimas publicaciones</h3>
+      </div>
+      <div class="bg-white my-3 mx-4 tabla bg-white py-2">
+        <table class="table">
+         
+          <tbody>
+            <%if (publicaciones.length !== 0){ %>
+                 <thead>
+            <tr>
+              <th>Título</th>
+              <th>Resumen</th>
+              <th>Votos</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+                <%publicaciones.forEach((publicacion)=>{ %>
+                <tr>
+                  <td><%=publicacion.titulo%></td>
+                  <td><%=publicacion.resumen%></td>
+                  <td><%=publicacion.votos%></td>
+                  <td>
+                    <a href="/admin/editar/<%=publicacion.id%>"
+                      ><span<i class="fas fa-edit">Editar</i></span
+                    ></a>|
+                    <a href="/admin/procesar_eliminar/<%=publicacion.id%>" onclick="confirm('Esta seguro de elimanar: <%=publicacion.titulo%>?')"><i class="fas fa-eraser"></i>Eliminar</a>
+                  </td>
+                </tr>
+              <%}) %>
+            <% } %> 
+             <%if (publicaciones.length === 0){%>
+              <h4 class="text-center text-danger"><%=sinpublicaciones%></h4>
+            <%}%>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center">
+        <a href="/admin/agregar" class="my-3 mx-4 text-center" ><button class="btn bg-success text-light">Agregar una publicacion</button></a>
+      </div>
+    </div>
+  </body>
+</html>

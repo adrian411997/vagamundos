@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/estilos.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.1/pure-min.css"
+      crossorigin="anonymous"
+    />
+
+    <!-- Load font awesome icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- Load font awesome icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    />
+    <link rel="icon" href="/images/viaje.png" />
+    <title>Perfil - Editar</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="contenido">
+    <%-include ('header_private_edit') %>
+    <div>
+      <div class="principal container bg-white my-3">
+        <div class="row bg-primary text-center">
+          <h3 class="text-light py-3">Datos del Perfil</h3>
+        </div>
+        <div class="row py-3 text-center">
+          <h4>Pseudonimo</h4>
+          <div class="components py-4">
+            <h5>Actual: <%=nombre.pseudonimo%></h5>
+            <div>
+              <form
+                class="form-inline"
+                method="POST"
+                action="/admin/procesar_perfil/<%=nombre.id%>"
+              >
+                <div class="input-group">
+                  <input
+                    type="text"
+                    id="newName"
+                    name="newName"
+                    class="form-control"
+                    placeholder="Ingrese nuevo pseudonimo"
+                  />
+                  <div class="input-group-prepend">
+                    <button class="btn btn-success" type="submit">
+                      Editar
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="row py-3 text-center">
+          <h4>Correo</h4>
+          <div class="components py-4">
+            <h5>Actual: <%=nombre.email%></h5>
+            <div>
+              <form
+                class="form-inline"
+                method="POST"
+                action="/admin/procesar_perfil/<%=nombre.id%>"
+              >
+                <div class="input-group">
+                  <input
+                    type="email"
+                    id="newEmail"
+                    name="newEmail"
+                    class="form-control"
+                    placeholder="Ingrese nuevo correo"
+                  />
+                  <div class="input-group-prepend">
+                    <button class="btn btn-success" type="submit">
+                      Editar
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% if(mensaje && mensaje.length >0){ %>
+    <h5 class="text-success text-center">
+      <span></span>
+
+      <%=mensaje%>
+    </h5>
+    <% } %>
+  </body>
+</html>

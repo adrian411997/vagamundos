@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/images/viaje.png" />
+    <link rel="stylesheet" href="stylesheets/estilos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Registro</title>
+</head>
+
+<body>
+    <%-include ('partials/header_public') %>
+
+    <div class="main principal py-3 ">
+        <h1 class="text-center">UNASE A NUESTRA COMUNIDAD PARA COMPARTIR</h1>
+        <h1 class="text-center">TUS EXPERIENCIAS POR EL MUNDO!</h1>
+        <div class="formulario container my-5">
+            <form action="/procesar_registro" method="POST">
+                <fieldset>
+                    <div class="content bg-light container w-50">
+                        <div class="image col-12 text-center my-3">
+                            <img class="user" src="images/user.jpg" width="150px">
+                        </div>
+                         <% if(mensaje && mensaje.length >0){ %>
+                            <h5 class="text-danger text-center"><span></span>
+
+                                <%=mensaje%>
+                            </h5>
+                        <% } %>
+                        <% if(aprobacion && aprobacion.length >0){ %>
+                            <h5 class="text-sucess text-center"><span></span>
+
+                                <%=aprobacion%>
+                            </h5>
+                        <% } %>
+                        <div class="col-12 my-3">
+                            <div class="form-group py-3 mx-3">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required="true" placeholder="Enter email">
+                            </div>
+                            <div class="form-group py-3 mx-3">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" name="password" required="true" placeholder="Enter password">
+                            </div>
+                            <div class="form-group py-3 mx-3">
+                                <label for="pseudonimo">Pseudonimo</label>
+                                <input type="text" class="form-control" id="pseudonimo" name="pseudonimo" required="true" placeholder="Ingrese un pseudonimo">
+                                <small id="pseudonimoHelp" class="form-text text-muted">Un nick para identificarte dentro de la página</small>
+                            </div>
+                            <div class="row mx-3">
+                                <button type="submit" class="btn btn-primary">Registrarse</button>
+                            </div>
+                        </div>
+                </fieldset>
+            </form>
+        </div>
+     </div>
+</body>
+
+</html>
